@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "octatum-website",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Octatum's Gatsby website",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Octatum <contacto@octatum.com>",
   "dependencies": {
     "@rebass/grid": "^6.0.0-7",
     "babel-plugin-styled-components": "^1.10.0",
@@ -30,7 +30,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "start": "npm run develop",
-    "format": "prettier --write \"src/**/*.js\"",
+    "format": "prettier --write 'src/**/*.jsx' 'src/**/*.js'",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "devDependencies": {
