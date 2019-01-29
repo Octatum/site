@@ -9,14 +9,18 @@ const StyledFlex = styled(Flex)`
   top: 0;
 `
 
+const Image = styled.img`
+  height: 100%;
+`
+
 const Navbar = () => {
   return (
     <StyledFlex p={4} justifyContent="space-between">
       <Box>
-        <img src={OctatumLogo} />
+        <Image src={OctatumLogo} />
       </Box>
       <Box>
-        <img src={Burger} />
+        <Image src={Burger} />
       </Box>
     </StyledFlex>
   );
