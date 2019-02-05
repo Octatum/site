@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { device } from '../utils/device';
+// import { device } from '../utils/device';
 
 const defaultSize = 1;
 const increments = {
@@ -34,7 +34,6 @@ const setAlign = ({ align }) => {
 
 const Text = styled.div`
   line-height: ${({ lineHeight }) => lineHeight || '1.2em'};
-  font-family: ${({ theme }) => theme.font.main};
   color: ${setColor};
   font-size: ${props => setFontSize(props, increments.default)};
   font-weight: ${setWeight};
@@ -53,5 +52,26 @@ const Text = styled.div`
       setFontSize({ size: props.mobileSize || props.size }, increments.mobile)};
   }
 `;
+
+export const Header = styled.h1`
+  line-height: ${({ lineHeight }) => lineHeight || '1.2em'};
+  font-family: "Playfair Display", "Lato", sans-serif;
+  font-size: ${props => setFontSize(props, increments.default)};
+  font-weight: ${setWeight};
+  text-align: ${setAlign};
+
+  ${device.laptop} {
+    font-size: ${props => setFontSize(props, increments.laptop)};
+  }
+
+  ${device.tablet} {
+    font-size: ${props => setFontSize(props, increments.tablet)};
+  }
+
+  ${device.mobile} {
+    font-size: ${props =>
+      setFontSize({ size: props.mobileSize || props.size }, increments.mobile)};
+  }
+`
 
 export default Text;

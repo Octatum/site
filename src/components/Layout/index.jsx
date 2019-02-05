@@ -11,6 +11,7 @@ import Navbar from '../Navbar';
 const Layout = ({ children, data }) => (
   <ThemeProvider theme={theme}>
     <React.Fragment>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
       <Helmet titleTemplate={data.site.siteMetadata.titleTemplate} />
       <Navbar />
       {children}
