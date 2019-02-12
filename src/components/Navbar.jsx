@@ -12,15 +12,16 @@ const StyledFlex = styled(Flex)`
 const Image = styled.img`
   height: 100%;
   width: 100%;
+  cursor: pointer;
 `
 
-const Navbar = () => {
+const Navbar = ({ toggleNavhub }) => {
   return (
     <StyledFlex p={4} justifyContent="space-between">
       <Box>
         <Image src={OctatumLogo} />
       </Box>
-      <Box>
+      <Box onClick={toggleNavhub}>
         <Image src={Burger} />
       </Box>
     </StyledFlex>
