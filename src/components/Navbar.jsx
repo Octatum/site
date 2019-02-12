@@ -11,6 +11,7 @@ const StyledFlex = styled(Flex)`
 
 const Image = styled.img`
   height: 100%;
+  width: 100%;
 `
 
 const Navbar = () => {
