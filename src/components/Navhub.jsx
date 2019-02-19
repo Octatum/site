@@ -61,6 +61,15 @@ const Address = styled.p`
   }
 `
 
+const Hyperlink = styled.a`
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
 const Contact = styled.p`
   line-height: 1.6;
 `
@@ -129,7 +138,7 @@ const Navhub = ({ toggleNavhub, open }) => (
     <ContentWrapper>
       <Box flex="1">
         <Details>
-          <Address>Av. Eugenio Garza Sada 427, Roma, 64840 Monterrey, N.L.</Address>
+          <Address><Hyperlink href="https://goo.gl/maps/CeY48p9Umvz" target="_blank">Av. Eugenio Garza Sada 427, Roma, 64840 Monterrey, N.L.</Hyperlink></Address>
           <Contact>
             +52 1 81 1910 8561
             <br/>

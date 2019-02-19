@@ -19,7 +19,7 @@ const Navbar = ({ toggleNavhub }) => {
   return (
     <StyledFlex p={4} justifyContent="space-between">
       <Box>
-        <Image src={OctatumLogo} />
+        <a href="/"><Image src={OctatumLogo} /></a>
       </Box>
       <Box onClick={toggleNavhub}>
         <Image src={Burger} />
