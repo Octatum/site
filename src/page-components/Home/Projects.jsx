@@ -27,12 +27,8 @@ const Sleek = styled.h1`
   }
 `
 
-const Grid = styled.div`
-  margin-bottom: 2em;
-`
-
 const Box = styled(_Box)`
-  background: ${({ color, theme }) => color ? color : theme.color.green};
+  position: relative;
   height: auto;
 
   &.square::after {
@@ -42,27 +38,42 @@ const Box = styled(_Box)`
   }
 `
 
+const InnerBox = styled.div`
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: ${({ color, theme }) => color ? color : theme.color.green};;
+`
+
 const Projects = () => (
   <Container>
     <HeaderDiv>
       <Fancy>Creando</Fancy>
       <Sleek>Arte<span>Web</span></Sleek>
     </HeaderDiv>
-    <Grid>
-      <Flex my={2}>
-        <Box flex={2} mr={2} className='square' color='red'/>
-        <Box flex={1} color='blue'/>
-      </Flex>
-      <Flex my={2}>
-        <Box flex={1} mr={2} className='square'/>
-        <Box flex={2} color='purple'/>
-      </Flex>
-      <Flex my={2}>
-        <Box flex={1} mr={2} className='square' />
-        <Box flex={1} mr={2} className='square' color='turquoise'/>
-        <Box flex={1} className='square' color='cyan'/>
-      </Flex>
-    </Grid>
+    <Flex my={2} flexWrap='wrap'>
+      <Box width={[2/3, 1/2, 2/6]} p={[1, 2]} className='square'>
+        <InnerBox color='red'/>
+      </Box>
+      <Box width={[1/3, 2/6, 1/6]} p={[1, 2]}>
+        <InnerBox color='blue'/>
+      </Box>
+      <Box width={[1/3, 1/6, 3/10]} p={[1, 2]} className='square'>
+        <InnerBox />
+      </Box>
+      <Box width={[2/3, 2/3, 2/10]} p={[1, 2]}>
+        <InnerBox color='purple'/>
+      </Box>
+      <Box width={[1/3, 1/3, 1/6]} p={[1, 2]} className='square'>
+        <InnerBox />
+      </Box>
+      <Box width={[1/3, 1/2, 1/2]} p={[1, 2]} className='square'>
+        <InnerBox color='turquoise'/>
+      </Box>
+      <Box width={[1/3, 1/2, 2/6]} p={[1, 2]} className='square'>
+        <InnerBox color='cyan'/>
+      </Box>
+    </Flex>
   </Container>
 );
 
