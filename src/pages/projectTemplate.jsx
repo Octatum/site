@@ -16,14 +16,17 @@ const TitleDiv = styled.div`
 `
 
 const Header = styled.h1`
+  padding-bottom: 0.7rem;
   font-family: "Playfair Display", "Lato", sans-serif;
   font-size: 2.3em;
-  padding-bottom: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 3px;
 `
 
 const Subheader = styled.h2`
   font-family: "Playfair Display", "Lato", sans-serif;
-  font-size: 1.1em;
+  font-size: 1.2em;
+  letter-spacing: 2px;
 
   b {
     font-weight: bold;
@@ -70,6 +73,7 @@ const Icon = styled.img`
 
 const Text = styled.p`
   padding-right: 2em;
+  font-size: 1.2em;
   font-weight: lighter;
   line-height: 33px;
 
