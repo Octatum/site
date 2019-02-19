@@ -11,7 +11,7 @@ import Navhub from '../Navhub';
 
 class Layout extends Component {
   state = {
-    navhubOpen: true
+    navhubOpen: false
   }
 
   toggleNavhub = () => {
