@@ -1,37 +1,37 @@
 import React from 'react';
 import styled from 'styled-components';
 import ImageGallery from 'react-image-gallery';
-import "react-image-gallery/styles/css/image-gallery.css";
+import 'react-image-gallery/styles/css/image-gallery.css';
 
 import Layout from '../components/Layout';
-import icon from "../assets/play.svg";
+import icon from '../assets/play.svg';
 
 const Container = styled.div`
   width: 100%;
   padding: 2em;
-`
+`;
 
 const TitleDiv = styled.div`
   padding-bottom: 2em;
-`
+`;
 
 const Header = styled.h1`
   padding-bottom: 0.7rem;
-  font-family: "Playfair Display", "Lato", sans-serif;
+  font-family: 'Playfair Display', 'Lato', sans-serif;
   font-size: 2.3em;
   font-weight: 800;
   letter-spacing: 3px;
-`
+`;
 
 const Subheader = styled.h2`
-  font-family: "Playfair Display", "Lato", sans-serif;
+  font-family: 'Playfair Display', 'Lato', sans-serif;
   font-size: 1.2em;
   letter-spacing: 2px;
 
   b {
     font-weight: bold;
   }
-`
+`;
 
 const ImageGalleryWrapper = styled.div`
   position: relative;
@@ -44,7 +44,7 @@ const ImageGalleryWrapper = styled.div`
   .image-gallery-thumbnail {
     width: calc(100% / ${props => props.imageCount});
   }
-`
+`;
 
 const Button = styled.button`
   border: none;
@@ -52,7 +52,7 @@ const Button = styled.button`
   font-size: 1.5em;
   background: transparent;
   cursor: pointer;
-`
+`;
 
 const SeeTheProject = styled.div`
   display: flex;
@@ -62,14 +62,14 @@ const SeeTheProject = styled.div`
   font-weight: lighter;
 
   span {
-    font-family: "Playfair Display", "Lato", sans-serif;
+    font-family: 'Playfair Display', 'Lato', sans-serif;
     font-weight: bold;
   }
-`
+`;
 
 const Icon = styled.img`
   margin-left: 0.5em;
-`
+`;
 
 const Text = styled.p`
   padding-right: 2em;
@@ -78,51 +78,55 @@ const Text = styled.p`
   line-height: 33px;
 
   span {
-    font-family: "Playfair Display", "Lato", sans-serif;
+    font-family: 'Playfair Display', 'Lato', sans-serif;
     font-weight: bold;
     color: ${({ theme }) => theme.color.green};
   }
-`
+`;
 
 const LeftButton = (onClick, disabled) => (
   <Button
-    className='image-gallery-custom-left-nav'
+    className="image-gallery-custom-left-nav"
     disabled={disabled}
-    onClick={onClick}>
-    <i class="fas fa-caret-left"/>
+    onClick={onClick}
+  >
+    <i class="fas fa-caret-left" />
   </Button>
-)
+);
 
 const RightButton = (onClick, disabled) => (
   <Button
-    className='image-gallery-custom-right-nav'
+    className="image-gallery-custom-right-nav"
     disabled={disabled}
-    onClick={onClick}>
-    <i class="fas fa-caret-right"/>
+    onClick={onClick}
+  >
+    <i class="fas fa-caret-right" />
   </Button>
-)
+);
 
 const images = [
   {
-    original: "http://lorempixel.com/1000/600",
-    thumbnail: "http://lorempixel.com/1000/600"
+    original: 'http://lorempixel.com/1000/600',
+    thumbnail: 'http://lorempixel.com/1000/600',
   },
   {
-    original: "http://lorempixel.com/999/600",
-    thumbnail: "http://lorempixel.com/999/600"
+    original: 'http://lorempixel.com/999/600',
+    thumbnail: 'http://lorempixel.com/999/600',
   },
   {
-    original: "http://lorempixel.com/998/600",
-    thumbnail: "http://lorempixel.com/998/600"
+    original: 'http://lorempixel.com/998/600',
+    thumbnail: 'http://lorempixel.com/998/600',
   },
-]
+];
 
 const projectTemplate = () => (
   <Layout>
     <Container>
       <TitleDiv>
         <Header>Proyecto</Header>
-        <Subheader>PIXEL<b>PERFECT</b></Subheader>
+        <Subheader>
+          PIXEL<b>PERFECT</b>
+        </Subheader>
       </TitleDiv>
       <ImageGalleryWrapper imageCount={images.length}>
         <ImageGallery
@@ -133,12 +137,18 @@ const projectTemplate = () => (
           renderRightNav={RightButton}
         />
         <SeeTheProject>
-          <p>see the <span>project</span></p>
-          <Icon src={icon}/>
+          <p>
+            see the <span>project</span>
+          </p>
+          <Icon src={icon} />
         </SeeTheProject>
       </ImageGalleryWrapper>
       <Text>
-        <span>— Lorem Ipsum</span> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into.
+        <span>— Lorem Ipsum</span> is simply dummy text of the printing and
+        typesetting industry. Lorem Ipsum has been the industry's standard dummy
+        text ever since the 1500s, when an unknown printer took a galley of type
+        and scrambled it to make a type specimen book. It has survived not only
+        five centuries, but also the leap into.
       </Text>
     </Container>
   </Layout>

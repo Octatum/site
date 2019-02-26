@@ -55,7 +55,7 @@ const Text = styled.div`
 
 export const Header = styled.h1`
   line-height: ${({ lineHeight }) => lineHeight || '1.2em'};
-  font-family: "Playfair Display", "Lato", sans-serif;
+  font-family: 'Playfair Display', 'Lato', sans-serif;
   font-size: ${props => setFontSize(props, increments.default)};
   font-weight: ${setWeight};
   text-align: ${setAlign};
@@ -72,6 +72,6 @@ export const Header = styled.h1`
     font-size: ${props =>
       setFontSize({ size: props.mobileSize || props.size }, increments.mobile)};
   }
-`
+`;
 
 export default Text;
