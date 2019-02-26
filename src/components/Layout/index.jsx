@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
@@ -9,38 +9,37 @@ import theme from '../../utils/theme';
 import Navbar from '../Navbar';
 import Navhub from '../Navhub';
 
-class Layout extends Component {
-  state = {
-    navhubOpen: false,
-  };
+function Layout(props) {
+  const [navhubOpen, setNavhubOpen] = useState(false);
+  const { children, data } = props;
 
-  toggleNavhub = () => {
-    this.setState(prevState => ({ navhubOpen: !prevState.navhubOpen }));
-  };
+  function openNavhub() {
+    setNavhubOpen(true);
+  }
 
-  render = () => {
-    const { children, data } = this.props;
+  function closeNavhub() {
+    setNavhubOpen(false);
+  }
 
-    return (
-      <ThemeProvider theme={theme}>
-        <React.Fragment>
-          <link
-            rel="stylesheet"
-            href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-            integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-            crossorigin="anonymous"
-          />
-          <Helmet titleTemplate={data.site.siteMetadata.titleTemplate} />
-          <Navbar toggleNavhub={this.toggleNavhub} />
-          {children}
-          <Navhub
-            toggleNavhub={this.toggleNavhub}
-            open={this.state.navhubOpen}
-          />
-        </React.Fragment>
-      </ThemeProvider>
-    );
-  };
+  return (
+    <ThemeProvider theme={theme}>
+      <React.Fragment>
+        <link
+          rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+          crossOrigin="anonymous"
+        />
+        <Helmet titleTemplate={data.site.siteMetadata.titleTemplate} />
+        <Navbar openNavhub={openNavhub} />
+        {children}
+        <Navhub
+          closeNavhub={closeNavhub}
+          open={navhubOpen}
+        />
+      </React.Fragment>
+    </ThemeProvider>
+  );
 }
 
 Layout.propTypes = {

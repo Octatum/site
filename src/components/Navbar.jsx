@@ -7,6 +7,7 @@ import Burger from '../assets/hamburguesita.svg';
 const StyledFlex = styled(Flex)`
   position: sticky;
   top: 0;
+  z-index: 1;
 `;
 
 const Image = styled.img`
@@ -15,7 +16,7 @@ const Image = styled.img`
   cursor: pointer;
 `;
 
-const Navbar = ({ toggleNavhub }) => {
+const Navbar = ({ openNavhub }) => {
   return (
     <StyledFlex p={4} justifyContent="space-between">
       <Box>
@@ -23,7 +24,7 @@ const Navbar = ({ toggleNavhub }) => {
           <Image src={OctatumLogo} />
         </a>
       </Box>
-      <Box onClick={toggleNavhub}>
+      <Box onClick={openNavhub}>
         <Image src={Burger} />
       </Box>
     </StyledFlex>

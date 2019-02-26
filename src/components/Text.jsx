@@ -13,7 +13,7 @@ const setColor = ({ theme, dark }) => {
   const { color } = theme;
   dark = dark || false;
 
-  return dark ? color.dark : color.light;
+  return dark ? color.dark : color.white;
 };
 
 const setWeight = ({ bold }) => {
@@ -32,46 +32,21 @@ const setAlign = ({ align }) => {
   return align || 'inherit';
 };
 
-const Text = styled.div`
+export const withTextStyle = (component) => styled(component)`
+  font-family: 'Playfair Display', 'Lato', sans-serif;
   line-height: ${({ lineHeight }) => lineHeight || '1.2em'};
   color: ${setColor};
   font-size: ${props => setFontSize(props, increments.default)};
   font-weight: ${setWeight};
   text-align: ${setAlign};
 
-  ${device.laptop} {
-    font-size: ${props => setFontSize(props, increments.laptop)};
-  }
-
-  ${device.tablet} {
-    font-size: ${props => setFontSize(props, increments.tablet)};
-  }
-
-  ${device.mobile} {
-    font-size: ${props =>
-      setFontSize({ size: props.mobileSize || props.size }, increments.mobile)};
-  }
+  ${({italic}) => italic && 'font-style: italic;'}
 `;
 
-export const Header = styled.h1`
+const Text = withTextStyle('div');
+
+export const Header = styled(withTextStyle('h1'))`
   line-height: ${({ lineHeight }) => lineHeight || '1.2em'};
-  font-family: 'Playfair Display', 'Lato', sans-serif;
-  font-size: ${props => setFontSize(props, increments.default)};
-  font-weight: ${setWeight};
-  text-align: ${setAlign};
-
-  ${device.laptop} {
-    font-size: ${props => setFontSize(props, increments.laptop)};
-  }
-
-  ${device.tablet} {
-    font-size: ${props => setFontSize(props, increments.tablet)};
-  }
-
-  ${device.mobile} {
-    font-size: ${props =>
-      setFontSize({ size: props.mobileSize || props.size }, increments.mobile)};
-  }
 `;
 
 export default Text;

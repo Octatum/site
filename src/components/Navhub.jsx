@@ -1,21 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Flex, Box } from '@rebass/grid';
+import Text from './Text';
 
-const Container = styled.div`
+const Container = styled(Flex)`
   position: fixed;
   top: 0;
   right: -100%;
+  background: ${props => props.theme.color.black};
+  transition: 0.7s right cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 2;
   height: 100%;
   width: 100%;
-  padding: 0 1em;
-  background: ${props => props.theme.color.black};
-  color: ${props => props.theme.color.white};
-  transition: 0.7s right cubic-bezier(0.23, 1, 0.32, 1);
 
-  &.open {
-    right: 0;
-  }
+  ${({open}) => open && 'right: 0;'}
 `;
 
 const ExitButton = styled.div`
@@ -61,16 +59,7 @@ const Address = styled.p`
   }
 `;
 
-const Hyperlink = styled.a`
-  text-decoration: none;
-  color: inherit;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const Contact = styled.p`
+const Contact = styled('div')`
   line-height: 1.6;
 `;
 
@@ -91,29 +80,6 @@ const LinkItem = styled.div`
   justify-content: center;
 `;
 
-const LinkHeader = styled.h3`
-  font-size: 2em;
-
-  span {
-    font-family: 'Playfair Display', 'Lato', sans-serif;
-    font-weight: bold;
-    font-style: italic;
-  }
-`;
-
-const LinkDetail = styled.p`
-  font-family: 'Playfair Display', 'Lato', sans-serif;
-`;
-
-const FooterMessage = styled.p`
-  font-size: 0.8em;
-
-  span {
-    font-family: 'Playfair Display', 'Lato', sans-serif;
-    font-weight: bold;
-  }
-`;
-
 const GreenIcon = styled.div`
   display: flex;
   align-items: center;
@@ -130,54 +96,57 @@ const Icon = styled.i`
   color: ${props => props.theme.color.black};
 `;
 
-const Navhub = ({ toggleNavhub, open }) => (
-  <Container className={open ? 'open' : ''}>
-    <ExitButton onClick={toggleNavhub}>
+const Navhub = ({ closeNavhub, open }) => (
+  <Container px={3} open={open}>
+    <ExitButton onClick={closeNavhub}>
       <i className="fas fa-times" />
     </ExitButton>
     <ContentWrapper>
       <Box flex="1">
         <Details>
           <Address>
-            <Hyperlink href="https://goo.gl/maps/CeY48p9Umvz" target="_blank">
+            <Text color="white" as='a' href="https://goo.gl/maps/CeY48p9Umvz" target="_blank">
               Av. Eugenio Garza Sada 427, Roma, 64840 Monterrey, N.L.
-            </Hyperlink>
+            </Text>
           </Address>
           <Contact>
-            +52 1 81 1910 8561
-            <br />
-            contacto@octatum.com
+            <Text color="white" as="p">
+              +52 1 81 1910 8561
+            </Text>
+            <Text color="white" as="p">
+              contacto@octatum.com
+            </Text>
           </Contact>
         </Details>
       </Box>
       <Box flex="1.3">
         <LinkList>
           <LinkItem>
-            <LinkHeader>
-              Lo que <span>hacemos</span>
-            </LinkHeader>
-            <LinkDetail>servicios</LinkDetail>
+            <Text size={4} as="p">
+              Lo que <Text as="span" bold italic>hacemos</Text>
+            </Text>
+            <Text size={2}>servicios</Text>
           </LinkItem>
           <LinkItem>
-            <LinkHeader>
-              Lo que <span>hicimos</span>
-            </LinkHeader>
-            <LinkDetail>portafolio</LinkDetail>
+            <Text size={4} as="p">
+              Lo que <Text as="span" bold italic>hicimos</Text>
+            </Text>
+            <Text size={2}>portafolio</Text>
           </LinkItem>
           <LinkItem>
-            <LinkHeader>
-              Lo que <span>haremos</span>
-            </LinkHeader>
-            <LinkDetail>contacto</LinkDetail>
+            <Text size={4} as="p">
+              Lo que <Text as="span" bold italic>haremos</Text>
+            </Text>
+            <Text size={2}>contacto</Text>
           </LinkItem>
         </LinkList>
       </Box>
       <Box>
         <Flex justifyContent="space-between" alignItems="center">
           <Box>
-            <FooterMessage>
-              2018, <span>INTERAXO LABS</span>, S.A.B. de C.V.
-            </FooterMessage>
+            <Text as="p">
+              2018, <Text as="span" bold>INTERAXO LABS</Text>, S.A. de C.V.
+            </Text>
           </Box>
           <Flex>
             <GreenIcon>
