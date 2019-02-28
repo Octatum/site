@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Flex, Box } from '@rebass/grid';
 import OctatumLogo from '../assets/octatum-black.svg';
 import Burger from '../assets/hamburguesita.svg';
+import Navhub from './Navhub';
 
 const StyledFlex = styled(Flex)`
   position: sticky;
@@ -16,18 +17,34 @@ const Image = styled.img`
   cursor: pointer;
 `;
 
-const Navbar = ({ openNavhub }) => {
+const Navbar = () => {
+  const [navhubOpen, setNavhubOpen] = useState(true);
+
+  function openNavhub() {
+    setNavhubOpen(true);
+  }
+
+  function closeNavhub() {
+    setNavhubOpen(false);
+  }
+
+  function toggleNavhub() {
+    setNavhubOpen(!navhubOpen);
+  }
   return (
-    <StyledFlex p={4} justifyContent="space-between">
-      <Box>
-        <a href="/">
-          <Image src={OctatumLogo} />
-        </a>
-      </Box>
-      <Box onClick={openNavhub}>
-        <Image src={Burger} />
-      </Box>
-    </StyledFlex>
+    <React.Fragment>
+      <StyledFlex p={4} justifyContent="space-between">
+        <Box>
+          <a href="/">
+            <Image src={OctatumLogo} />
+          </a>
+        </Box>
+        <Box onClick={openNavhub}>
+          <Image src={Burger} />
+        </Box>
+      </StyledFlex>
+      <Navhub closeNavhub={toggleNavhub} open={navhubOpen} />
+    </React.Fragment>
   );
 };
 
