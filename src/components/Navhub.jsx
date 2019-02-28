@@ -7,46 +7,17 @@ const Container = styled(Flex)`
   position: fixed;
   top: 0;
   right: -100%;
-  background: ${props => props.theme.color.black};
-  transition: 0.7s right cubic-bezier(0.23, 1, 0.32, 1);
+  background-color: rgba(255, 255, 255, 0.6);
   z-index: 2;
   height: 100%;
   width: 100%;
 
-  ${({open}) => open && 'right: 0;'}
+  ${({ open }) => open && 'right: 0;'}
 `;
 
-const ExitButton = styled.div`
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
-  padding: 0.5rem;
-  font-size: 2em;
-  cursor: pointer;
-`;
 
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  padding: 4em 1em 1em;
-  overflow-y: scroll;
-`;
-
-const Details = styled.div`
-  height: 100%;
-  width: 100%;
-  padding-right: 25%;
-  font-family: 'Playfair Display', 'Lato', sans-serif;
-  line-height: 1.3;
-`;
-
-const Address = styled.p`
+const Address = styled(Box)`
   position: relative;
-  font-size: 2em;
-  padding-bottom: 0.3em;
-  margin-bottom: 1em;
 
   &::after {
     content: '';
@@ -54,30 +25,9 @@ const Address = styled.p`
     bottom: 0;
     left: 0;
     height: 0;
-    width: 48px;
-    border: 2px solid ${props => props.theme.color.green};
+    width: 1.8em;
+    border: 1px solid ${props => props.theme.color.green};
   }
-`;
-
-const Contact = styled('div')`
-  line-height: 1.6;
-`;
-
-const LinkList = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  padding-left: 25%;
-  text-align: right;
-  line-height: 1.3;
-`;
-
-const LinkItem = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 `;
 
 const GreenIcon = styled.div`
@@ -87,7 +37,6 @@ const GreenIcon = styled.div`
   height: 2.2em;
   width: 2.2em;
   border-radius: 50%;
-  margin: 0 1em;
   background: ${props => props.theme.color.green};
 `;
 
@@ -97,71 +46,110 @@ const Icon = styled.i`
 `;
 
 const Navhub = ({ closeNavhub, open }) => (
-  <Container px={3} open={open}>
-    <ExitButton onClick={closeNavhub}>
-      <i className="fas fa-times" />
-    </ExitButton>
-    <ContentWrapper>
-      <Box flex="1">
-        <Details>
+  <Container open={open}>
+    <Box width={[1, 1, 1 / 2]} style={{ backgroundColor: 'black' }} ml="auto">
+      <Flex px={4} py={3} flexDirection="column" style={{height: "100%"}}>
+        <Box
+          onClick={closeNavhub}
+          style={{ alignSelf: 'flex-end', cursor: 'pointer' }}
+        >
+          <Text color="white" size={8} style={{lineHeight: "0.5em"}}>
+            &times;
+          </Text>
+        </Box>
+        <Box>
           <Address>
-            <Text color="white" as='a' href="https://goo.gl/maps/CeY48p9Umvz" target="_blank">
-              Av. Eugenio Garza Sada 427, Roma, 64840 Monterrey, N.L.
-            </Text>
+            <Box mb={[2, 3, 4]} pb={2}>
+              <Text
+                font="secondary"
+                size={3}
+                color="white"
+                as="a"
+                href="https://goo.gl/maps/CeY48p9Umvz"
+                target="_blank"
+              >
+                Av. Eugenio Garza Sada 427,
+                <br />
+                Roma, 64840 Monterrey,
+                <br />
+                N.L.
+              </Text>
+            </Box>
           </Address>
-          <Contact>
-            <Text color="white" as="p">
+          <Box mb={2}>
+            <Text font="secondary" size={1} color="white" as="p">
               +52 1 81 1910 8561
             </Text>
-            <Text color="white" as="p">
-              contacto@octatum.com
-            </Text>
-          </Contact>
-        </Details>
-      </Box>
-      <Box flex="1.3">
-        <LinkList>
-          <LinkItem>
-            <Text size={4} as="p">
-              Lo que <Text as="span" bold italic>hacemos</Text>
-            </Text>
-            <Text size={2}>servicios</Text>
-          </LinkItem>
-          <LinkItem>
-            <Text size={4} as="p">
-              Lo que <Text as="span" bold italic>hicimos</Text>
-            </Text>
-            <Text size={2}>portafolio</Text>
-          </LinkItem>
-          <LinkItem>
-            <Text size={4} as="p">
-              Lo que <Text as="span" bold italic>haremos</Text>
-            </Text>
-            <Text size={2}>contacto</Text>
-          </LinkItem>
-        </LinkList>
-      </Box>
-      <Box>
-        <Flex justifyContent="space-between" alignItems="center">
-          <Box>
-            <Text as="p">
-              2018, <Text as="span" bold>INTERAXO LABS</Text>, S.A. de C.V.
-            </Text>
           </Box>
-          <Flex>
-            <GreenIcon>
-              <Icon className="fab fa-behance" />
-            </GreenIcon>
-            <GreenIcon>
-              <Icon className="fab fa-twitter" />
-            </GreenIcon>
-            <GreenIcon>
-              <Icon className="fab fa-facebook-f" />
-            </GreenIcon>
+          <Text font="secondary" size={1} color="white" as="p">
+            contacto@octatum.com
+          </Text>
+        </Box>
+        <Box flex="1" py={4}>
+          <Flex
+            flexDirection="column"
+            alignItems="flex-end"
+            style={{ textAlign: 'right', height: "100%" }}
+          >
+            <Box flex="1">
+              <Text size={4} as="p">
+                Lo que{' '}
+                <Text as="span" font="secondary" bold italic>
+                  hacemos
+                </Text>
+              </Text>
+              <Text size={1} font="secondary">
+                servicios
+              </Text>
+            </Box>
+            <Box flex="1">
+              <Text size={4} as="p">
+                Lo que{' '}
+                <Text as="span" font="secondary" bold italic>
+                  hicimos
+                </Text>
+              </Text>
+              <Text size={1} font="secondary">
+                portafolio
+              </Text>
+            </Box>
+            <Box flex="1">
+              <Text size={4} as="p">
+                Lo que{' '}
+                <Text as="span" font="secondary" bold italic>
+                  haremos
+                </Text>
+              </Text>
+              <Text size={1} font="secondary">
+                contacto
+              </Text>
+            </Box>
           </Flex>
-        </Flex>
-      </Box>
-    </ContentWrapper>
+        </Box>
+        <Box>
+          <Flex justifyContent="space-between" alignItems="center">
+            <Box>
+              <Text as="p">
+                2018,{' '}
+                <Text font="secondary" as="span" bold>
+                  INTERAXO LABS
+                </Text>
+                , S.A. de C.V.
+              </Text>
+            </Box>
+            <Flex>
+              {["fab fa-behance", "fab fa-instagram", "fab fa-facebook-f"].map((item)=> (
+                <Box pl={4} key={item}>
+                <GreenIcon>
+                  <Icon className={item} />
+                </GreenIcon>
+                </Box>
+              ))}
+            </Flex>
+          </Flex>
+        </Box>
+      </Flex>
+    </Box>
   </Container>
 );
 

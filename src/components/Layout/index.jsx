@@ -33,10 +33,7 @@ function Layout(props) {
         <Helmet titleTemplate={data.site.siteMetadata.titleTemplate} />
         <Navbar openNavhub={openNavhub} />
         {children}
-        <Navhub
-          closeNavhub={closeNavhub}
-          open={navhubOpen}
-        />
+        <Navhub closeNavhub={closeNavhub} open={navhubOpen} />
       </React.Fragment>
     </ThemeProvider>
   );
