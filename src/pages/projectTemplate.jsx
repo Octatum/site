@@ -9,6 +9,10 @@ import icon from '../assets/play.svg';
 const Container = styled.div`
   width: 100%;
   padding: 2em;
+
+  @media screen and (min-width: ${props => props.theme.breakpoints[1]}) {
+    padding: 2em 5em;
+  }
 `;
 
 const TitleDiv = styled.div`
@@ -16,11 +20,16 @@ const TitleDiv = styled.div`
 `;
 
 const Header = styled.h1`
-  padding-bottom: 0.7rem;
+  padding-bottom: 0.35em;
   font-family: 'Playfair Display', 'Lato', sans-serif;
   font-size: 2.3em;
   font-weight: 800;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
+
+  @media screen and (min-width: ${props => props.theme.breakpoints[1]}) {
+    padding-bottom: 0.5em;
+    font-size: 3em;
+  }
 `;
 
 const Subheader = styled.h2`
@@ -30,6 +39,10 @@ const Subheader = styled.h2`
 
   b {
     font-weight: bold;
+  }
+
+  @media screen and (min-width: ${props => props.theme.breakpoints[1]}) {
+    font-size: 1.5em;
   }
 `;
 
@@ -72,6 +85,7 @@ const Icon = styled.img`
 `;
 
 const Text = styled.p`
+  max-width: 640px;
   padding-right: 2em;
   font-size: 1.2em;
   font-weight: lighter;
