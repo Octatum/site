@@ -4,6 +4,7 @@ import { Flex, Box } from '@rebass/grid';
 import OctatumLogo from '../assets/octatum-black.svg';
 import Burger from '../assets/hamburguesita.svg';
 import Navhub from './Navhub';
+import BurgerMenu from './BurgerMenu';
 
 const StyledFlex = styled(Flex)`
   position: sticky;
@@ -18,19 +19,16 @@ const Image = styled.img`
 `;
 
 const Navbar = () => {
-  const [navhubOpen, setNavhubOpen] = useState(true);
-
-  function openNavhub() {
-    setNavhubOpen(true);
-  }
+  const [navhubOpen, setNavhubOpen] = useState(false);
 
   function closeNavhub() {
     setNavhubOpen(false);
   }
 
-  function toggleNavhub() {
-    setNavhubOpen(!navhubOpen);
+  function openNavhub() {
+    setNavhubOpen(true);
   }
+
   return (
     <React.Fragment>
       <StyledFlex p={4} justifyContent="space-between">
@@ -40,10 +38,10 @@ const Navbar = () => {
           </a>
         </Box>
         <Box onClick={openNavhub}>
-          <Image src={Burger} />
+          <BurgerMenu open={navhubOpen}/>
         </Box>
       </StyledFlex>
-      <Navhub closeNavhub={toggleNavhub} open={navhubOpen} />
+      <Navhub closeNavhub={closeNavhub} open={navhubOpen} />
     </React.Fragment>
   );
 };

@@ -7,10 +7,10 @@ import Text from './Text';
 const Container = styled(Flex)`
   position: fixed;
   top: 0;
-  background-color: rgba(255, 255, 255, 0.6);
   z-index: 2;
   height: 100%;
-  width: 100%;
+  width: 50%;
+  right: -50%;
 `;
 
 const Address = styled(Box)`
@@ -44,14 +44,19 @@ const Icon = styled.i`
 
 const Navhub = ({ closeNavhub, open }) => {
   const props = useSpring({
+    delay: open ? 500 : 0,
     to: open
-      ? [{ display: 'flex' }, { opacity: '1' }]
-      : [{ opacity: '0' }, { display: 'none' }],
+      ? [
+          { right: '0%' },
+        ]
+      : [
+          { right: '-50%' },
+        ],
   });
 
   return (
     <Container as={animated.div} style={props}>
-      <Box width={[1, 1, 1 / 2]} style={{ backgroundColor: 'black' }} ml="auto">
+      <Box width={1} style={{ backgroundColor: 'black' }}>
         <Flex px={4} py={3} flexDirection="column" style={{ height: '100%' }}>
           <Box
             onClick={closeNavhub}
