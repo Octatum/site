@@ -12,7 +12,7 @@ const Layout = styled(Flex)`
 `;
 
 const Bar = styled(animated.div)`
-  background: black;
+  background: ${({ theme }) => theme.color.black};
   height: 4px;
   border-radius: 4px;
 `;

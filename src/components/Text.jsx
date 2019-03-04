@@ -9,11 +9,8 @@ const increments = {
   mobile: 0.3,
 };
 
-const setColor = ({ theme, dark }) => {
-  const { color } = theme;
-  dark = dark || false;
-
-  return dark ? color.dark : color.white;
+const setColor = ({ theme, color = 'white' }) => {
+  return theme.color[color];
 };
 
 const setWeight = ({ bold }) => {

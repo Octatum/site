@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Flex, Box } from '@rebass/grid';
 import OctatumLogo from '../assets/octatum-black.svg';
-import Burger from '../assets/hamburguesita.svg';
 import Navhub from './Navhub';
 import BurgerMenu from './BurgerMenu';
+import { Link } from 'gatsby';
 
 const StyledFlex = styled(Flex)`
   position: sticky;
@@ -15,7 +15,7 @@ const StyledFlex = styled(Flex)`
 const Image = styled.img`
   height: 100%;
   width: 100%;
-  cursor: pointer;
+  mix-blend-mode: difference;
 `;
 
 const Navbar = () => {
@@ -33,12 +33,12 @@ const Navbar = () => {
     <React.Fragment>
       <StyledFlex p={4} justifyContent="space-between">
         <Box>
-          <a href="/">
+          <Link style={{ display: 'block' }} to="/">
             <Image src={OctatumLogo} />
-          </a>
+          </Link>
         </Box>
         <Box onClick={openNavhub}>
-          <BurgerMenu open={navhubOpen}/>
+          <BurgerMenu open={navhubOpen} />
         </Box>
       </StyledFlex>
       <Navhub closeNavhub={closeNavhub} open={navhubOpen} />
