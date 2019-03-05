@@ -30,7 +30,7 @@ const setAlign = ({ align = 'inherit' }) => {
 const setFontFamily = ({ font }) => {
   return font === 'secondary'
     ? `'Playfair Display', 'Lato', sans-serif`
-    : 'Raleway';
+    : 'inherit';
 };
 
 export const withTextStyle = component => styled(component)`

@@ -4,7 +4,8 @@ import Layout from '../components/Layout';
 import SEO from '../components/seo';
 import Projects from '../page-components/Home/Projects';
 import Processes from '../page-components/Home/Processes';
-import Contact from '../page-components/Home/Contact';
+import Contact from '../page-components/Home/ContactForm';
+import Footer from '../components/Footer';
 
 const IndexPage = () => (
   <Layout>
@@ -12,6 +13,7 @@ const IndexPage = () => (
     <Projects />
     {/* <Processes /> */}
     <Contact />
+    <Footer />
   </Layout>
 );
 

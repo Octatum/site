@@ -33,7 +33,12 @@ const Navbar = () => {
 
   return (
     <React.Fragment>
-      <StyledFlex mx="auto" px={5} py={4} justifyContent="space-between">
+      <StyledFlex
+        mx="auto"
+        px={[2, 3, 5]}
+        py={4}
+        justifyContent="space-between"
+      >
         <Box>
           <Link style={{ display: 'block' }} to="/">
             <Image src={OctatumLogo} />

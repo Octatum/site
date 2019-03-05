@@ -24,7 +24,7 @@ const ImageGalleryWrapper = styled(Box)`
   }
 
   .image-gallery-thumbnail {
-    width: 33%;
+    width: 34%;
     box-sizing: border-box;
   }
 `;
