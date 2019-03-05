@@ -45,18 +45,12 @@ const Icon = styled.i`
 const Navhub = ({ closeNavhub, open }) => {
   const props = useSpring({
     delay: open ? 500 : 0,
-    to: open
-      ? [
-          { right: '0%' },
-        ]
-      : [
-          { right: '-50%' },
-        ],
+    to: open ? [{ right: '0%' }] : [{ right: '-50%' }],
   });
 
   return (
     <Container as={animated.div} style={props}>
-      <Box width={1} style={{ backgroundColor: 'black' }}>
+      <Box width={1} style={{ backgroundColor: '#050505' }}>
         <Flex px={4} py={3} flexDirection="column" style={{ height: '100%' }}>
           <Box
             onClick={closeNavhub}
@@ -101,35 +95,35 @@ const Navhub = ({ closeNavhub, open }) => {
               style={{ textAlign: 'right', height: '100%' }}
             >
               <Box flex="1">
-                <Text size={4} as="p">
+                <Text color="white" size={4} as="p">
                   Lo que{' '}
-                  <Text as="span" font="secondary" bold italic>
+                  <Text color="white" as="span" font="secondary" bold italic>
                     hacemos
                   </Text>
                 </Text>
-                <Text size={1} font="secondary">
+                <Text size={1} font="secondary" color="white">
                   servicios
                 </Text>
               </Box>
               <Box flex="1">
-                <Text size={4} as="p">
+                <Text color="white" size={4} as="p">
                   Lo que{' '}
-                  <Text as="span" font="secondary" bold italic>
+                  <Text color="white" as="span" font="secondary" bold italic>
                     hicimos
                   </Text>
                 </Text>
-                <Text size={1} font="secondary">
+                <Text size={1} font="secondary" color="white">
                   portafolio
                 </Text>
               </Box>
               <Box flex="1">
-                <Text size={4} as="p">
+                <Text color="white" size={4} as="p">
                   Lo que{' '}
-                  <Text as="span" font="secondary" bold italic>
+                  <Text color="white" as="span" font="secondary" bold italic>
                     haremos
                   </Text>
                 </Text>
-                <Text size={1} font="secondary">
+                <Text size={1} font="secondary" color="white">
                   contacto
                 </Text>
               </Box>
@@ -137,15 +131,7 @@ const Navhub = ({ closeNavhub, open }) => {
           </Box>
           <Box>
             <Flex justifyContent="space-between" alignItems="center">
-              <Box>
-                <Text as="p">
-                  2018,{' '}
-                  <Text font="secondary" as="span" bold>
-                    INTERAXO LABS
-                  </Text>
-                  , S.A. de C.V.
-                </Text>
-              </Box>
+              <Box />
               <Flex>
                 {[
                   'fab fa-behance',

@@ -22,10 +22,10 @@ const Projects = () => (
       <Text as="div" color="black" font="secondary" size={5}>
         Creando
       </Text>
-      <Text size={2} color="black" style={{ letterSpacing: '11px' }}>
-        Arte
+      <Text size={2} color="black" style={{ letterSpacing: '.6em' }}>
+        arte
         <Text as="span" color="green" bold>
-          WEB
+          web
         </Text>
       </Text>
     </h1>

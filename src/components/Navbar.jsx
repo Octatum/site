@@ -9,13 +9,15 @@ import { Link } from 'gatsby';
 const StyledFlex = styled(Flex)`
   position: sticky;
   top: 0;
+  max-width: 1300px;
   z-index: 1;
+  box-sizing: content-box;
+  background: ${({ theme }) => theme.color.white};
 `;
 
 const Image = styled.img`
   height: 100%;
   width: 100%;
-  mix-blend-mode: difference;
 `;
 
 const Navbar = () => {
@@ -31,13 +33,13 @@ const Navbar = () => {
 
   return (
     <React.Fragment>
-      <StyledFlex p={4} justifyContent="space-between">
+      <StyledFlex mx="auto" px={5} py={4} justifyContent="space-between">
         <Box>
           <Link style={{ display: 'block' }} to="/">
             <Image src={OctatumLogo} />
           </Link>
         </Box>
-        <Box onClick={openNavhub}>
+        <Box onClick={openNavhub} style={{ cursor: 'pointer' }}>
           <BurgerMenu open={navhubOpen} />
         </Box>
       </StyledFlex>

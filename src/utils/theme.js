@@ -3,7 +3,7 @@ const theme = {
   breakpoints: ['32em', '48em', '64em'],
   color: {
     black: '#111',
-    green: '#51ff01',
+    green: '#3FCA00',
     white: '#ffffff',
   },
 };
