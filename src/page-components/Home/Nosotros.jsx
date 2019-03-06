@@ -10,11 +10,13 @@ const GreenBox = styled(Box)`
 `;
 
 const Nosotros = props => (
-  <React.Fragment>
+  <section>
     <CommonContainer pt={4}>
-      <Box py={3}>
-        <Text bold>Descubre a</Text>
-        <Text font="secondary" size={8} bold>
+      <Box w={1}>
+        <Text as="p" bold size={1} size={2}>
+          Descubre a
+        </Text>
+        <Text as="h2" font="secondary" size={10} bold>
           Octatum
         </Text>
       </Box>
@@ -30,14 +32,14 @@ const Nosotros = props => (
       <GreenBox my={3} pt={1} width={2 / 3} />
       <GreenBox py={3} width={1 / 3} />
     </Flex>
-    <CommonContainer pt={4} justifyContent="flex-end">
+    <CommonContainer pt={5} pb={4} justifyContent="flex-end">
       <Box width={2 / 3} ml="auto">
         <MarkdownText align="right" lineHeight={1.5}>
           {props.description}
         </MarkdownText>
       </Box>
     </CommonContainer>
-  </React.Fragment>
+  </section>
 );
 
 export default Nosotros;

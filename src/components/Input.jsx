@@ -6,7 +6,7 @@ const withInputStyle = Component => styled(withTextStyle(Component))`
   width: 100%;
   background: #f1f1f1;
   border: none;
-  padding: 6px 4px;
+  padding: 6px 5px;
 
   textarea& {
     resize: none;

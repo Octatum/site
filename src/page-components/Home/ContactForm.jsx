@@ -37,7 +37,7 @@ function Contact() {
   };
 
   return (
-    <CommonContainer py={4}>
+    <CommonContainer py={2}>
       <Flex justifyContent="flex-end">
         <Box w={1}>
           <Text as="p" bold size={1} align="right" size={2}>
