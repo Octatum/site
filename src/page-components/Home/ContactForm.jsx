@@ -6,6 +6,7 @@ import LabelInput from '../../components/LabelInput';
 import { Flex, Box } from '@rebass/grid';
 import Text from '../../components/Text';
 import Button from '../../components/Button';
+import SectionHeader from './SectionHeader';
 
 const formName = 'Contacto';
 
@@ -38,15 +39,12 @@ function Contact() {
 
   return (
     <CommonContainer py={2}>
-      <Flex justifyContent="flex-end">
-        <Box w={1}>
-          <Text as="p" bold size={1} align="right" size={2}>
-            Ponte en
-          </Text>
-          <Text as="h2" font="secondary" size={10} align="right" bold>
-            contacto
-          </Text>
-        </Box>
+      <Flex>
+        <SectionHeader
+          topText="Armemos"
+          lightText="un gran"
+          greenText="FUTURO"
+        />
       </Flex>
       <Formik
         initialValues={{
@@ -67,7 +65,7 @@ function Contact() {
               name={formName}
               my={4}
               mx="auto"
-              style={{ maxWidth: '58em' }}
+              style={{ maxWidth: '40em' }}
             >
               <p hidden>
                 <label>
@@ -76,7 +74,7 @@ function Contact() {
               </p>
 
               <Flex flexDirection={['column', 'column', 'row']}>
-                <Box pb={3} width={[1, 1, 1 / 2]} pr={[0, 0, 5]}>
+                <Box pb={2} width={[1, 1, 1 / 2]} pr={[0, 0, 5]}>
                   <LabelInput
                     text="Nombre"
                     name="name"
@@ -84,7 +82,7 @@ function Contact() {
                     disabled={disabled}
                   />
                 </Box>
-                <Box pb={3} width={[1, 1, 1 / 2]} pl={[0, 0, 5]}>
+                <Box pb={2} width={[1, 1, 1 / 2]} pl={[0, 0, 5]}>
                   <LabelInput
                     text="Correo"
                     name="email"
@@ -100,10 +98,16 @@ function Contact() {
                 disabled={disabled}
                 component="textarea"
               />
-              <Flex pt={4}>
+              <Flex pt={3}>
                 <Box ml="auto">
-                  <Button disabled={disabled} type="submit">
-                    enviar
+                  <Button
+                    px={4}
+                    py={2}
+                    disabled={disabled}
+                    medium
+                    type="submit"
+                  >
+                    Enviar
                   </Button>
                 </Box>
               </Flex>

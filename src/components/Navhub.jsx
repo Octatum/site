@@ -22,7 +22,7 @@ const Address = styled(Box)`
     bottom: 0;
     left: 0;
     height: 0;
-    width: 1.8em;
+    width: 2em;
     border: 1px solid ${props => props.theme.color.green};
   }
 `;
@@ -44,7 +44,7 @@ const Icon = styled.i`
 
 const Navhub = ({ closeNavhub, open }) => {
   const props = useSpring({
-    delay: open ? 500 : 0,
+    delay: open ? 150 : 0,
     to: open ? [{ right: '0%' }] : [{ right: '-50%' }],
   });
 
@@ -62,65 +62,72 @@ const Navhub = ({ closeNavhub, open }) => {
           </Box>
           <Box>
             <Address>
-              <Box mb={[2, 3, 4]} pb={2}>
+              <Box mb={[2, 3, 3]} pb={3}>
                 <Text
-                  font="secondary"
-                  size={3}
                   color="white"
-                  as="a"
-                  href="https://goo.gl/maps/CeY48p9Umvz"
-                  target="_blank"
+                  as="p"
+                  align="left"
+                  size={1}
+                  lineHeight="1"
+                  uppercase
                 >
-                  Av. Eugenio Garza Sada 427,
-                  <br />
-                  Roma, 64840 Monterrey,
-                  <br />
-                  N.L.
+                  Ponte en
+                </Text>
+                <Text
+                  as="h2"
+                  font="secondary"
+                  lineHeight="1"
+                  size={7}
+                  align="left"
+                  style={{ marginTop: '-0.1em' }}
+                  bold
+                  italic
+                  color="white"
+                >
+                  contacto
                 </Text>
               </Box>
             </Address>
-            <Box mb={2}>
-              <Text font="secondary" size={1} color="white" as="p">
-                +52 1 81 1910 8561
+            <Box pt={3}>
+              <Text font="secondary" color="white" as="p">
+                contacto@octatum.com
               </Text>
             </Box>
-            <Text font="secondary" size={1} color="white" as="p">
-              contacto@octatum.com
-            </Text>
           </Box>
           <Box flex="1" py={4}>
             <Flex
               flexDirection="column"
               alignItems="flex-end"
               style={{ textAlign: 'right', height: '100%' }}
+              pt={5}
             >
               <Box flex="1">
-                <Text color="white" size={4} as="p">
-                  Lo que{' '}
+                <Text color="white" size={3} as="p">
+                  Explora nuestro{' '}
                   <Text color="white" as="span" font="secondary" bold italic>
-                    hacemos
+                    pasado
                   </Text>
                 </Text>
                 <Text size={1} font="secondary" color="white">
-                  servicios
+                  proyectos
                 </Text>
               </Box>
               <Box flex="1">
-                <Text color="white" size={4} as="p">
-                  Lo que{' '}
+                <Text color="white" size={3} as="p">
+                  Conoce nuestro{' '}
                   <Text color="white" as="span" font="secondary" bold italic>
-                    hicimos
+                    presente
                   </Text>
                 </Text>
                 <Text size={1} font="secondary" color="white">
-                  portafolio
+                  nosotros
                 </Text>
               </Box>
               <Box flex="1">
-                <Text color="white" size={4} as="p">
-                  Lo que{' '}
+                <Text color="white" size={3} as="p">
+                  Armemos un gran{' '}
                   <Text color="white" as="span" font="secondary" bold italic>
-                    haremos
+                    futuro
                   </Text>
                 </Text>
                 <Text size={1} font="secondary" color="white">
@@ -131,7 +138,15 @@ const Navhub = ({ closeNavhub, open }) => {
           </Box>
           <Box>
             <Flex justifyContent="space-between" alignItems="center">
-              <Box />
+              <Box>
+                <Text color="white" font="secondary">
+                  Creando{' '}
+                  <Text as="span" weight="900" color="white">
+                    arte web{' '}
+                  </Text>
+                  desde el 2018.
+                </Text>
+              </Box>
               <Flex>
                 {[
                   'fab fa-behance',

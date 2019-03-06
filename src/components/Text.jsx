@@ -13,10 +13,16 @@ const setColor = ({ theme, color = 'black' }) => {
   return theme.color[color];
 };
 
-const setWeight = ({ bold }) => {
-  bold = bold || false;
+const setWeight = ({ bold = false, medium = false, weight = 300 }) => {
+  if (bold) {
+    return '700';
+  }
 
-  return bold ? '700' : '300';
+  if (medium) {
+    return '500';
+  }
+
+  return weight;
 };
 
 const setFontSize = ({ size = 1 }, increment) => {
@@ -41,7 +47,8 @@ export const withTextStyle = component => styled(component)`
   font-weight: ${setWeight};
   text-align: ${setAlign};
   text-decoration: none;
-
+  ${({ capitalize }) => capitalize && 'text-transform: capitalize;'}
+  ${({ uppercase }) => uppercase && 'text-transform: uppercase;'}
   ${({ italic }) => italic && 'font-style: italic;'}
 `;
 

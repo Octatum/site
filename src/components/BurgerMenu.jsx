@@ -19,8 +19,8 @@ const Bar = styled(animated.div)`
 
 function BurgerMenu(props) {
   const { open } = props;
-  const baseDelay = open ? 0 : 250;
-  const delayIncrement = 100;
+  const baseDelay = open ? 0 : 50;
+  const delayIncrement = 50;
 
   const commonProps = {
     delay: baseDelay,

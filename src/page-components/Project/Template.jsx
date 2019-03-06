@@ -19,12 +19,12 @@ const ImageGalleryWrapper = styled(Box)`
     padding-top: 8px;
 
     .image-gallery-thumbnails-container {
-      ${({ imagesLength }) => imagesLength < 3 && 'text-align: left;'}
+      ${({ imagesLength }) => imagesLength < 4 && 'text-align: left;'}
     }
   }
 
   .image-gallery-thumbnail {
-    width: 34%;
+    width: 27%;
     box-sizing: border-box;
   }
 `;
@@ -62,7 +62,7 @@ const Template = props => {
             showPlayButton={false}
             showNav={false}
           />
-          <Flex justifyContent="flex-end" alignItems="center">
+          <Flex justifyContent="flex-end" alignItems="center" py={2}>
             <OutsideLink
               as="a"
               target="_blank"

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Flex, Box } from '@rebass/grid';
 import Text from '../../components/Text';
 import CommonContainer from '../../components/CommonContainer';
+import SectionHeader from './SectionHeader';
 
 const ImageBox = styled(Box)`
   height: 12rem;
@@ -18,15 +19,8 @@ const ImageBox = styled(Box)`
 
 const Projects = () => (
   <CommonContainer>
-    <Flex justifyContent="flex-end">
-      <Box pb={3} w={1}>
-        <Text as="p" bold size={1} align="right" size={2}>
-          Ve nuestros
-        </Text>
-        <Text as="h2" font="secondary" size={10} align="right" bold>
-          proyectos
-        </Text>
-      </Box>
+    <Flex justifyContent="flex-start" mt={3}>
+      <SectionHeader topText="Explora" lightText="nuestro" greenText="PASADO" />
     </Flex>
     <Flex mb={2} flexWrap="wrap">
       <ImageBox

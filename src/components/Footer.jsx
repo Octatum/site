@@ -12,7 +12,7 @@ function Footer() {
   return (
     <React.Fragment>
       <Border />
-      <CommonContainer py={5}>
+      <CommonContainer py={4}>
         <Box width={1}>
           <Text align="center" font="secondary">
             Copyright © Todos los derechos reservados.{' '}
