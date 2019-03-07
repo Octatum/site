@@ -7,6 +7,8 @@ import { Flex, Box } from '@rebass/grid';
 import Text from '../../components/Text';
 import Button from '../../components/Button';
 import SectionHeader from './SectionHeader';
+import SectionDiv from '../../components/SectionDiv';
+import { navigationIds } from '../../components/Navhub';
 
 const formName = 'Contacto';
 
@@ -39,6 +41,7 @@ function Contact() {
 
   return (
     <CommonContainer py={2}>
+      <SectionDiv id={navigationIds.contact} />
       <Flex>
         <SectionHeader
           topText="Armemos"

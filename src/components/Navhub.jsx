@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
 import { Flex, Box } from '@rebass/grid';
 import Text from './Text';
+import { Link } from 'gatsby';
 
 const Container = styled(Flex)`
   position: fixed;
@@ -40,6 +41,20 @@ const GreenIcon = styled.div`
 const Icon = styled.i`
   font-size: 1.15em;
   color: ${props => props.theme.color.black};
+`;
+
+export const navigationIds = {
+  projects: 'proyectos',
+  about: 'nosotros',
+  contact: 'contacto',
+};
+
+const LinkBox = styled(Box).attrs({
+  as: Link,
+  flex: 1,
+})`
+  display: block;
+  text-decoration: none;
 `;
 
 const Navhub = ({ closeNavhub, open }) => {
@@ -101,7 +116,7 @@ const Navhub = ({ closeNavhub, open }) => {
               style={{ textAlign: 'right', height: '100%' }}
               pt={5}
             >
-              <Box flex="1">
+              <LinkBox to={`/#${navigationIds.projects}`}>
                 <Text color="white" size={3} as="p">
                   Explora nuestro{' '}
                   <Text color="white" as="span" font="secondary" bold italic>
@@ -111,8 +126,8 @@ const Navhub = ({ closeNavhub, open }) => {
                 <Text size={1} font="secondary" color="white">
                   proyectos
                 </Text>
-              </Box>
-              <Box flex="1">
+              </LinkBox>
+              <LinkBox to={`/#${navigationIds.about}`}>
                 <Text color="white" size={3} as="p">
                   Conoce nuestro{' '}
                   <Text color="white" as="span" font="secondary" bold italic>
@@ -122,8 +137,8 @@ const Navhub = ({ closeNavhub, open }) => {
                 <Text size={1} font="secondary" color="white">
                   nosotros
                 </Text>
-              </Box>
-              <Box flex="1">
+              </LinkBox>
+              <LinkBox to={`/#${navigationIds.contact}`}>
                 <Text color="white" size={3} as="p">
                   Armemos un gran{' '}
                   <Text color="white" as="span" font="secondary" bold italic>
@@ -133,7 +148,7 @@ const Navhub = ({ closeNavhub, open }) => {
                 <Text size={1} font="secondary" color="white">
                   contacto
                 </Text>
-              </Box>
+              </LinkBox>
             </Flex>
           </Box>
           <Box>
@@ -148,11 +163,7 @@ const Navhub = ({ closeNavhub, open }) => {
                 </Text>
               </Box>
               <Flex>
-                {[
-                  'fab fa-behance',
-                  'fab fa-instagram',
-                  'fab fa-facebook-f',
-                ].map(item => (
+                {['fab fa-facebook-f'].map(item => (
                   <Box pl={4} key={item}>
                     <GreenIcon>
                       <Icon className={item} />

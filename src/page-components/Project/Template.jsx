@@ -25,6 +25,7 @@ const ImageGalleryWrapper = styled(Box)`
 
   .image-gallery-thumbnail {
     width: 27%;
+    min-width: 300px;
     box-sizing: border-box;
   }
 `;
@@ -40,7 +41,21 @@ const OutsideLink = styled(Box)`
 `;
 
 const Template = props => {
-  const { projectTitle, images, description, link } = props.data;
+  const {
+    projectName,
+    customerName,
+    images,
+    thumbnails,
+    description,
+    url,
+  } = props.data.sanityProject;
+  const imageSources = images.map((image, index) => {
+    return {
+      original: image.file.asset.url,
+      thumbnail: thumbnails[index].file.asset.url,
+    };
+  });
+  console.log(images, imageSources);
 
   return (
     <Layout>
@@ -48,16 +63,16 @@ const Template = props => {
         <Box>
           <Box py={3}>
             <Text color="black" size={6} bold font="secondary">
-              Proyecto
+              {customerName}
             </Text>
           </Box>
           <MarkdownHeader font="secondary" size={2} color="black">
-            {projectTitle}
+            {projectName}
           </MarkdownHeader>
         </Box>
         <ImageGalleryWrapper mt={3} imagesLength={images.length}>
           <ImageGallery
-            items={images}
+            items={imageSources}
             showFullscreenButton={false}
             showPlayButton={false}
             showNav={false}
@@ -66,7 +81,7 @@ const Template = props => {
             <OutsideLink
               as="a"
               target="_blank"
-              href={link}
+              href={url}
               rel="noopener noreferrer"
             >
               <Text>

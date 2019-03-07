@@ -8,4 +8,13 @@ const theme = {
   },
 };
 
+const query = q => `@media (min-width: ${q})`;
+
+export const mediaQueries = {
+  small: query(theme.breakpoints[0]),
+  medium: query(theme.breakpoints[1]),
+  large: query(theme.breakpoints[2]),
+  largest: query(theme.breakpoints[3]),
+};
+
 export default theme;

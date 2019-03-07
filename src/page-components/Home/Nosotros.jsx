@@ -5,6 +5,8 @@ import { Box, Flex } from '@rebass/grid';
 import CommonContainer from '../../components/CommonContainer';
 import Text, { MarkdownText } from '../../components/Text';
 import SectionHeader from './SectionHeader';
+import { navigationIds } from '../../components/Navhub';
+import SectionDiv from '../../components/SectionDiv';
 
 const GreenBox = styled(Box)`
   background: ${props => props.theme.color.green};
@@ -13,6 +15,7 @@ const GreenBox = styled(Box)`
 const Nosotros = props => (
   <section>
     <CommonContainer pt={4}>
+      <SectionDiv id={navigationIds.about} />
       <SectionHeader
         topText="Conoce"
         lightText="nuestro"
