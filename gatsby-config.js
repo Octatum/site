@@ -27,6 +27,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#fff`,
+        display: 'standalone',
         icon: `static/favicon.png`, // This path is relative to the root of the site.
         include_favicon: true, // Include favicon
       },
@@ -39,6 +40,21 @@ module.exports = {
         head: false,
       },
     },
-    // 'gatsby-plugin-offline',
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Playfair Display`,
+            variants: ['400', '700', '700i', '900'],
+          },
+          {
+            family: 'Raleway',
+            variants: ['300', '300i', '500', '800'],
+          },
+        ],
+      },
+    },
+    'gatsby-plugin-offline',
   ],
 };
