@@ -25,7 +25,7 @@ const ImageGalleryWrapper = styled(Box)`
 
   .image-gallery-thumbnail {
     width: 27%;
-    min-width: 300px;
+    min-width: 200px;
     box-sizing: border-box;
   }
 `;

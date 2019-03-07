@@ -67,7 +67,7 @@ const Projects = () => {
   return (
     <CommonContainer>
       <SectionDiv id={navigationIds.projects} />
-      <Flex justifyContent="flex-start" mt={3}>
+      <Flex justifyContent="flex-start">
         <SectionHeader
           topText="Explora"
           lightText="nuestro"

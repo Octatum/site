@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
+import { mediaQueries } from '../utils/theme';
 
 const defaultSize = 1;
 const increments = {
@@ -43,13 +44,17 @@ export const withTextStyle = component => styled(component)`
   font-family: ${setFontFamily};
   line-height: ${({ lineHeight }) => lineHeight || '1.2em'};
   color: ${setColor};
-  font-size: ${props => setFontSize(props, increments.default)};
+  font-size: ${props => setFontSize(props, increments.mobile)};
   font-weight: ${setWeight};
   text-align: ${setAlign};
   text-decoration: none;
   ${({ capitalize }) => capitalize && 'text-transform: capitalize;'}
   ${({ uppercase }) => uppercase && 'text-transform: uppercase;'}
   ${({ italic }) => italic && 'font-style: italic;'}
+
+  ${mediaQueries.medium} {
+    font-size: ${props => setFontSize(props, increments.default)};
+  }
 `;
 
 const Text = withTextStyle('div');

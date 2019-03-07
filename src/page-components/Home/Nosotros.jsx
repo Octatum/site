@@ -36,7 +36,7 @@ const Nosotros = props => (
       <GreenBox py={3} width={1 / 3} />
     </Flex>
     <CommonContainer py={5} justifyContent="flex-end">
-      <Box width={2 / 3} ml="auto">
+      <Box width={[1, 1, 2 / 3]} ml="auto">
         <MarkdownText size={2} align="right" lineHeight={1.5}>
           {props.description}
         </MarkdownText>

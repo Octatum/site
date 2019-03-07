@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 import Nosotros from '../page-components/Home/Nosotros';
 
 const mockData = {
-  about: `Para nosotros, las _páginas web_ son un punto de encuentro donde se genera una comunidad alrededor de los usuarios, de forma **atemporal** y sin fronteras, desde la comodidad de su hogar, mientras viajan en el transporte puíblico, durante la espera antes de alguna cita o en sus ratos libres. Por eso, ayudamos a descubrir a nuestros clientes la experiencia que buscan _transmitir_, acompañandolos en un proceso tanto **creativo** como **técnico**.`,
+  about: `Para nosotros, las _páginas web_ son un punto de encuentro donde se genera una comunidad alrededor de los usuarios, de forma **atemporal** y sin fronteras, desde la comodidad de su hogar, mientras viajan en el transporte público, durante la espera antes de alguna cita, o en sus ratos libres. Por eso, ayudamos a nuestros clientes a crear nuevas experiencias en internet, acompañandolos en un proceso tanto **creativo** como **técnico**.`,
 };
 
 const IndexPage = () => (

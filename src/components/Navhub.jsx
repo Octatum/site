@@ -10,8 +10,8 @@ const Container = styled(Flex)`
   top: 0;
   z-index: 2;
   height: 100%;
-  width: 50%;
-  right: -50%;
+  width: 100%;
+  display: none;
 `;
 
 const Address = styled(Box)`
@@ -28,7 +28,7 @@ const Address = styled(Box)`
   }
 `;
 
-const GreenIcon = styled.div`
+const GreenIcon = styled('a')`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,6 +42,13 @@ const Icon = styled.i`
   font-size: 1.15em;
   color: ${props => props.theme.color.black};
 `;
+
+const socialLinks = [
+  {
+    icon: 'fab fa-facebook-f',
+    link: 'https://fb.com/octatum',
+  },
+];
 
 export const navigationIds = {
   projects: 'proyectos',
@@ -60,13 +67,34 @@ const LinkBox = styled(Box).attrs({
 const Navhub = ({ closeNavhub, open }) => {
   const props = useSpring({
     delay: open ? 150 : 0,
-    to: open ? [{ right: '0%' }] : [{ right: '-50%' }],
+    to: open
+      ? [
+          {
+            display: 'flex',
+            opacity: 1,
+            background: 'rgba(255, 255, 255, 0.3)',
+          },
+        ]
+      : [
+          { opacity: 0, background: 'rgba(255, 255, 255, 0)' },
+          { display: 'none' },
+        ],
   });
 
   return (
-    <Container as={animated.div} style={props}>
-      <Box width={1} style={{ backgroundColor: '#050505' }}>
-        <Flex px={4} py={3} flexDirection="column" style={{ height: '100%' }}>
+    <Container
+      onClick={closeNavhub}
+      as={animated.div}
+      style={props}
+      justifyContent="flex-end"
+    >
+      <Box width={[1, 1, 1 / 2]} style={{ backgroundColor: '#050505' }}>
+        <Flex
+          px={[3, 4]}
+          py={3}
+          flexDirection="column"
+          style={{ height: '100%' }}
+        >
           <Box
             onClick={closeNavhub}
             style={{ alignSelf: 'flex-end', cursor: 'pointer' }}
@@ -114,7 +142,7 @@ const Navhub = ({ closeNavhub, open }) => {
               flexDirection="column"
               alignItems="flex-end"
               style={{ textAlign: 'right', height: '100%' }}
-              pt={5}
+              pt={[2, 3, 5]}
             >
               <LinkBox to={`/#${navigationIds.projects}`}>
                 <Text color="white" size={3} as="p">
@@ -163,10 +191,14 @@ const Navhub = ({ closeNavhub, open }) => {
                 </Text>
               </Box>
               <Flex>
-                {['fab fa-facebook-f'].map(item => (
-                  <Box pl={4} key={item}>
-                    <GreenIcon>
-                      <Icon className={item} />
+                {socialLinks.map(item => (
+                  <Box pl={4} key={item.link}>
+                    <GreenIcon
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Icon className={item.icon} />
                     </GreenIcon>
                   </Box>
                 ))}
