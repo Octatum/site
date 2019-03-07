@@ -15,7 +15,6 @@ const mockData = {
 const IndexPage = () => (
   <Layout>
     <SEO
-      title="Inicio"
       keywords={[
         `Octatum`,
         `Web development`,
