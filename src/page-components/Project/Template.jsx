@@ -8,6 +8,7 @@ import icon from '../../assets/play.svg';
 import CommonContainer from '../../components/CommonContainer';
 import Text, { MarkdownText } from '../../components/Text';
 import { Box, Flex } from '@rebass/grid';
+import SEO from '../../components/seo';
 
 const MarkdownHeader = styled(MarkdownText)`
   letter-spacing: 2px;
@@ -58,6 +59,19 @@ const Template = props => {
 
   return (
     <Layout>
+      <SEO
+        title={projectName}
+        description={description}
+        keywords={[
+          `Octatum`,
+          `Web development`,
+          `Desarrollo web`,
+          'gatsby',
+          'react',
+          projectName,
+          customerName,
+        ]}
+      />
       <CommonContainer mb={5}>
         <Box>
           <Box py={3}>

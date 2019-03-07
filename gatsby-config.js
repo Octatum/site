@@ -3,9 +3,8 @@ require('dotenv').config({
 });
 module.exports = {
   siteMetadata: {
-    titleTemplate: `%s - Octatum desarrollo web`,
     defaultTitle: `Octatum desarrollo web`,
-    description: `Desarrollo web empresarial`,
+    description: `Agencia de desarrollo web empresarial`,
     author: `contacto@octatum.com`,
   },
   plugins: [
@@ -18,6 +17,18 @@ module.exports = {
         dataset: 'projects',
         token: process.env.GATSBY_SANITY_KEY,
         watchMode: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Octatum Desarrollo Web`,
+        short_name: `Octatum`,
+        start_url: `/`,
+        background_color: `#fff`,
+        theme_color: `#fff`,
+        icon: `static/favicon.png`, // This path is relative to the root of the site.
+        include_favicon: true, // Include favicon
       },
     },
     // 'gatsby-plugin-offline',

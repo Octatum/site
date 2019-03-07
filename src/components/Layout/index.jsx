@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
-import { StaticQuery, graphql } from 'gatsby';
 import { ThemeProvider } from 'styled-components';
 
 import './layout.css';
@@ -9,7 +7,7 @@ import theme from '../../utils/theme';
 import Navbar from '../Navbar';
 
 function Layout(props) {
-  const { children, data } = props;
+  const { children } = props;
 
   return (
     <ThemeProvider theme={theme}>
@@ -20,7 +18,6 @@ function Layout(props) {
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
           crossOrigin="anonymous"
         />
-        <Helmet titleTemplate={data.site.siteMetadata.titleTemplate} />
         <Navbar />
         {children}
       </React.Fragment>
@@ -32,17 +29,4 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default props => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            titleTemplate
-          }
-        }
-      }
-    `}
-    render={data => <Layout data={data} {...props} />}
-  />
-);
+export default Layout;

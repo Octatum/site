@@ -15,7 +15,7 @@ function SEO({ description, lang, meta, keywords, title }) {
             htmlAttributes={{
               lang,
             }}
-            title={title}
+            title={`${title} - Octatum Desarrollo Web`}
             meta={[
               {
                 name: `description`,
