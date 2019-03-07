@@ -41,7 +41,7 @@ const Navbar = () => {
       >
         <Box>
           <Link style={{ display: 'block' }} to="/">
-            <Image src={OctatumLogo} />
+            <Image alt="Logotipo de Octatum" src={OctatumLogo} />
           </Link>
         </Box>
         <Box onClick={openNavhub} style={{ cursor: 'pointer' }}>

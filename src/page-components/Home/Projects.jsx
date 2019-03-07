@@ -80,10 +80,14 @@ const Projects = () => {
           return (
             <ImageBox
               as={Link}
+              name={`Ver detalles de proyecto ${project.name}`}
               to={`/project/${projectCleanName}`}
               key={projectCleanName}
             >
-              <Image fluid={project.coverImages[0].asset.fluid} />
+              <Image
+                alt={project.name}
+                fluid={project.coverImages[0].asset.fluid}
+              />
             </ImageBox>
           );
         })}
