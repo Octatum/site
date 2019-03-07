@@ -4,7 +4,6 @@ import { encode } from '../../utils/functions';
 import CommonContainer from '../../components/CommonContainer';
 import LabelInput from '../../components/LabelInput';
 import { Flex, Box } from '@rebass/grid';
-import Text from '../../components/Text';
 import Button from '../../components/Button';
 import SectionHeader from './SectionHeader';
 import SectionDiv from '../../components/SectionDiv';

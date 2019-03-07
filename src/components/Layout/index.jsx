@@ -5,6 +5,10 @@ import { ThemeProvider } from 'styled-components';
 import './layout.css';
 import theme from '../../utils/theme';
 import Navbar from '../Navbar';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
+
+library.add(faFacebookF);
 
 function Layout(props) {
   const { children } = props;
@@ -12,12 +16,6 @@ function Layout(props) {
   return (
     <ThemeProvider theme={theme}>
       <React.Fragment>
-        <link
-          rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-          crossOrigin="anonymous"
-        />
         <Navbar />
         {children}
       </React.Fragment>

@@ -2,8 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
 import { Flex, Box } from '@rebass/grid';
-import Text from './Text';
 import { Link } from 'gatsby';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import Text from './Text';
 
 const Container = styled(Flex)`
   position: fixed;
@@ -12,6 +14,7 @@ const Container = styled(Flex)`
   height: 100%;
   width: 100%;
   display: none;
+  justify-content: flex-end;
 `;
 
 const Address = styled(Box)`
@@ -28,7 +31,7 @@ const Address = styled(Box)`
   }
 `;
 
-const GreenIcon = styled('a')`
+const GreenIcon = styled(OutboundLink)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,14 +41,15 @@ const GreenIcon = styled('a')`
   background: ${props => props.theme.color.green};
 `;
 
-const Icon = styled.i`
+const Icon = styled(FontAwesomeIcon)`
   font-size: 1.15em;
   color: ${props => props.theme.color.black};
+  text-decoration: none;
 `;
 
 const socialLinks = [
   {
-    icon: 'fab fa-facebook-f',
+    icon: ['fab', 'facebook-f'],
     link: 'https://fb.com/octatum',
   },
 ];
@@ -82,12 +86,7 @@ const Navhub = ({ closeNavhub, open }) => {
   });
 
   return (
-    <Container
-      onClick={closeNavhub}
-      as={animated.div}
-      style={props}
-      justifyContent="flex-end"
-    >
+    <Container onClick={closeNavhub} as={animated.div} style={props}>
       <Box width={[1, 1, 1 / 2]} style={{ backgroundColor: '#050505' }}>
         <Flex
           px={[3, 4]}
@@ -198,7 +197,7 @@ const Navhub = ({ closeNavhub, open }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Icon className={item.icon} />
+                      <Icon icon={item.icon} />
                     </GreenIcon>
                   </Box>
                 ))}
