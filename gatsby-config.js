@@ -6,6 +6,7 @@ module.exports = {
     defaultTitle: `Octatum desarrollo web`,
     description: `Agencia de desarrollo web empresarial`,
     author: `contacto@octatum.com`,
+    siteUrl: 'https://octatum.com',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
