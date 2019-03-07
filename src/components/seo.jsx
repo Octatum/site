@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 
-function SEO({ description, lang, meta, keywords, title }) {
+const generalTitle = 'Octatum Desarrollo Web';
+
+function SEO(props) {
+  const { description, lang, meta, keywords, title } = props;
+
+  const finalTitle = (title && `${title} - ${generalTitle}`) || generalTitle;
   return (
     <StaticQuery
       query={detailsQuery}
@@ -15,7 +20,7 @@ function SEO({ description, lang, meta, keywords, title }) {
             htmlAttributes={{
               lang,
             }}
-            title={`${title} - Octatum Desarrollo Web`}
+            title={finalTitle}
             meta={[
               {
                 name: `description`,
