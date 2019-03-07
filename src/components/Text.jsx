@@ -1,5 +1,6 @@
-import styled from 'styled-components/macro';
-import { device } from '../utils/device';
+import styled from 'styled-components';
+import ReactMarkdown from 'react-markdown';
+import { mediaQueries } from '../utils/theme';
 
 const defaultSize = 1;
 const increments = {
@@ -9,48 +10,63 @@ const increments = {
   mobile: 0.3,
 };
 
-const setColor = ({ theme, dark }) => {
-  const { color } = theme;
-  dark = dark || false;
-
-  return dark ? color.dark : color.light;
+const setColor = ({ theme, color = 'black' }) => {
+  return theme.color[color];
 };
 
-const setWeight = ({ bold }) => {
-  bold = bold || false;
+const setWeight = ({ bold = false, medium = false, weight = 300 }) => {
+  if (bold) {
+    return '700';
+  }
 
-  return bold ? '700' : '300';
+  if (medium) {
+    return '500';
+  }
+
+  return weight;
 };
 
-const setFontSize = ({ size }, increment) => {
-  size = size || 1;
-
+const setFontSize = ({ size = 1 }, increment) => {
   return `${defaultSize + increment * (size - 1)}em`;
 };
 
-const setAlign = ({ align }) => {
-  return align || 'inherit';
+const setAlign = ({ align = 'inherit' }) => {
+  return align;
 };
 
-const Text = styled.div`
+const setFontFamily = ({ font }) => {
+  return font === 'secondary'
+    ? `'Playfair Display', 'Lato', sans-serif`
+    : 'inherit';
+};
+
+export const withTextStyle = component => styled(component)`
+  font-family: ${setFontFamily};
   line-height: ${({ lineHeight }) => lineHeight || '1.2em'};
-  font-family: ${({ theme }) => theme.font.main};
   color: ${setColor};
-  font-size: ${props => setFontSize(props, increments.default)};
+  font-size: ${props => setFontSize(props, increments.mobile)};
   font-weight: ${setWeight};
   text-align: ${setAlign};
+  text-decoration: none;
+  ${({ capitalize }) => capitalize && 'text-transform: capitalize;'}
+  ${({ uppercase }) => uppercase && 'text-transform: uppercase;'}
+  ${({ italic }) => italic && 'font-style: italic;'}
 
-  ${device.laptop} {
-    font-size: ${props => setFontSize(props, increments.laptop)};
+  ${mediaQueries.medium} {
+    font-size: ${props => setFontSize(props, increments.default)};
+  }
+`;
+
+const Text = withTextStyle('div');
+
+export const Header = withTextStyle('h1');
+export const MarkdownText = styled(withTextStyle(ReactMarkdown))`
+  strong {
+    font-weight: bold;
   }
 
-  ${device.tablet} {
-    font-size: ${props => setFontSize(props, increments.tablet)};
-  }
-
-  ${device.mobile} {
-    font-size: ${props =>
-      setFontSize({ size: props.mobileSize || props.size }, increments.mobile)};
+  em {
+    color: ${({ theme }) => theme.color.green};
   }
 `;
 
