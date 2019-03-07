@@ -30,7 +30,7 @@ function Contact() {
         }),
       });
       setMessageSent(true);
-      alert('Your message has been sent');
+      alert('Tu mensaje ha sido enviado');
       actions.resetForm();
     } catch (exception) {
       setFormError(true);
