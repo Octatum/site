@@ -55,7 +55,6 @@ const Template = props => {
       thumbnail: thumbnails[index].file.asset.url,
     };
   });
-  console.log(images, imageSources);
 
   return (
     <Layout>
