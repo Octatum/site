@@ -81,7 +81,7 @@ const Projects = () => {
             <ImageBox
               as={Link}
               name={`Ver detalles de proyecto ${project.name}`}
-              to={`/project/${projectCleanName}`}
+              to={`/proyecto/${projectCleanName}`}
               key={projectCleanName}
             >
               <Image
