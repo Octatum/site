@@ -31,6 +31,14 @@ module.exports = {
         include_favicon: true, // Include favicon
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-113177710-1',
+        // Puts tracking script in the head instead of the body
+        head: false,
+      },
+    },
     // 'gatsby-plugin-offline',
   ],
 };
