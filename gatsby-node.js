@@ -30,7 +30,7 @@ exports.createPages = ({ actions, graphql }) => {
       const route = getCleanName(node.projectName);
 
       createPage({
-        path: `/project/${route}`,
+        path: `/proyecto/${route}`,
         component: projectTemplate,
         context: {
           name: node.projectName,
