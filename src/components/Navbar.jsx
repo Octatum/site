@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Flex, Box } from '@rebass/grid';
 import OctatumLogo from '../assets/octatum-black.svg';
@@ -6,13 +6,23 @@ import Navhub from './Navhub';
 import BurgerMenu from './BurgerMenu';
 import { Link } from 'gatsby';
 
-const StyledFlex = styled(Flex)`
+const Container = styled.div`
   position: sticky;
   top: 0;
-  max-width: 1300px;
+  width: 100%;
   z-index: 1;
-  box-sizing: content-box;
   background: ${({ theme }) => theme.color.white};
+  border-bottom: 1px solid transparent;
+  transition: all 0.4s;
+
+  &.top {
+    border-bottom-color: #dfdfdf;
+  }
+`;
+
+const StyledFlex = styled(Flex)`
+  max-width: 1300px;
+  box-sizing: content-box;
 `;
 
 const Image = styled.img`
@@ -22,6 +32,17 @@ const Image = styled.img`
 
 const Navbar = () => {
   const [navhubOpen, setNavhubOpen] = useState(false);
+  const [top, setTop] = useState(true);
+
+  useEffect(() => {
+    window.onscroll = () => {
+      setTop(window.pageYOffset === 0);
+    };
+
+    return () => {
+      window.onscroll = null;
+    };
+  });
 
   function closeNavhub() {
     setNavhubOpen(false);
@@ -32,7 +53,7 @@ const Navbar = () => {
   }
 
   return (
-    <React.Fragment>
+    <Container className={top ? 'top' : ''}>
       <StyledFlex
         mx="auto"
         px={[3, 3, 5]}
@@ -49,7 +70,7 @@ const Navbar = () => {
         </Box>
       </StyledFlex>
       <Navhub closeNavhub={closeNavhub} open={navhubOpen} />
-    </React.Fragment>
+    </Container>
   );
 };
 
