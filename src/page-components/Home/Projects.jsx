@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Flex, Box } from '@rebass/grid';
+import { useTransition, animated } from 'react-spring';
 import CommonContainer from '../../components/CommonContainer';
 import SectionHeader from './SectionHeader';
 import { useStaticQuery, graphql, Link } from 'gatsby';
@@ -9,13 +10,6 @@ import GatsbyImage from 'gatsby-image';
 import { getCleanName } from '../../utils/functions';
 import { navigationIds } from '../../components/Navhub';
 import SectionDiv from '../../components/SectionDiv';
-
-const ImageBox = styled(Box)`
-  height: 12.5rem;
-  max-width: 29rem;
-  background: green;
-  width: 100%;
-`;
 
 const Grid = styled(Flex)`
   display: grid;
@@ -34,12 +28,29 @@ const Grid = styled(Flex)`
   }
 `;
 
-const Image = styled(GatsbyImage)`
+const ImageBox = styled(Box)`
+  position: relative;
+  height: 12.5rem;
+  max-width: 29rem;
+  width: 100%;
+`;
+
+const Image = styled(animated(GatsbyImage))`
   max-height: 100%;
   height: 100%;
 `;
 
+const imageStyles = {
+  position: 'absolute',
+  top: '0',
+  left: '0',
+  width: '100%',
+};
+
 const Projects = () => {
+  const [index, setIndex] = useState(0);
+  useEffect(() => setInterval(() => setIndex((index + 1) % 2), 2000), []);
+
   const projectsQueryData = useStaticQuery(graphql`
     {
       allSanityProject {
@@ -49,7 +60,7 @@ const Projects = () => {
             coverImages {
               asset {
                 fluid(maxWidth: 400) {
-                  ...GatsbySanityImageFluid
+                  ...GatsbySanityImageFluid_noBase64
                 }
               }
             }
@@ -63,6 +74,12 @@ const Projects = () => {
     coverImages: node.coverImages || [],
     name: node.projectName || '',
   }));
+
+  const transitions = useTransition(index, null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+  });
 
   return (
     <CommonContainer>
@@ -84,10 +101,13 @@ const Projects = () => {
               to={`/proyecto/${projectCleanName}`}
               key={projectCleanName}
             >
-              <Image
-                alt={project.name}
-                fluid={project.coverImages[0].asset.fluid}
-              />
+              {transitions.map(({ item, props, key }) => (
+                <Image
+                  alt={project.name}
+                  fluid={project.coverImages[item].asset.fluid}
+                  style={{ ...props, ...imageStyles }}
+                />
+              ))}
             </ImageBox>
           );
         })}
