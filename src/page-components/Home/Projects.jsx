@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { Flex, Box } from '@rebass/grid';
-import { useTransition, animated } from 'react-spring';
+import { Flex } from '@rebass/grid';
+import { useStaticQuery, graphql } from 'gatsby';
 import CommonContainer from '../../components/CommonContainer';
 import SectionHeader from './SectionHeader';
-import { useStaticQuery, graphql, Link } from 'gatsby';
 import { mediaQueries } from '../../utils/theme';
-import GatsbyImage from 'gatsby-image';
-import { getCleanName } from '../../utils/functions';
 import { navigationIds } from '../../components/Navhub';
 import SectionDiv from '../../components/SectionDiv';
+import ProjectBox from './ProjectBox';
 
 const Grid = styled(Flex)`
   display: grid;
@@ -28,29 +26,7 @@ const Grid = styled(Flex)`
   }
 `;
 
-const ImageBox = styled(Box)`
-  position: relative;
-  height: 12.5rem;
-  max-width: 29rem;
-  width: 100%;
-`;
-
-const Image = styled(animated(GatsbyImage))`
-  max-height: 100%;
-  height: 100%;
-`;
-
-const imageStyles = {
-  position: 'absolute',
-  top: '0',
-  left: '0',
-  width: '100%',
-};
-
 const Projects = () => {
-  const [index, setIndex] = useState(0);
-  useEffect(() => setInterval(() => setIndex((index + 1) % 2), 2000), []);
-
   const projectsQueryData = useStaticQuery(graphql`
     {
       allSanityProject {
@@ -59,7 +35,8 @@ const Projects = () => {
             projectName
             coverImages {
               asset {
-                fluid(maxWidth: 400) {
+                id
+                fluid(maxWidth: 400, maxHeight: 200) {
                   ...GatsbySanityImageFluid_noBase64
                 }
               }
@@ -75,12 +52,6 @@ const Projects = () => {
     name: node.projectName || '',
   }));
 
-  const transitions = useTransition(index, null, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-  });
-
   return (
     <CommonContainer>
       <SectionDiv id={navigationIds.projects} />
@@ -92,25 +63,9 @@ const Projects = () => {
         />
       </Flex>
       <Grid>
-        {projects.map(project => {
-          const projectCleanName = getCleanName(project.name);
-          return (
-            <ImageBox
-              as={Link}
-              name={`Ver detalles de proyecto ${project.name}`}
-              to={`/proyecto/${projectCleanName}`}
-              key={projectCleanName}
-            >
-              {transitions.map(({ item, props, key }) => (
-                <Image
-                  alt={project.name}
-                  fluid={project.coverImages[item].asset.fluid}
-                  style={{ ...props, ...imageStyles }}
-                />
-              ))}
-            </ImageBox>
-          );
-        })}
+        {projects.map(project => (
+          <ProjectBox key={project.name} project={project} />
+        ))}
       </Grid>
     </CommonContainer>
   );

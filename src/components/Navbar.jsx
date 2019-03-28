@@ -12,17 +12,14 @@ const Container = styled.div`
   width: 100%;
   z-index: 1;
   background: ${({ theme }) => theme.color.white};
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid #dfdfdf;
   transition: all 0.4s;
-
-  &.top {
-    border-bottom-color: #dfdfdf;
-  }
 `;
 
 const StyledFlex = styled(Flex)`
   max-width: 1300px;
   box-sizing: content-box;
+  transition: 150ms ease all;
 `;
 
 const Image = styled.img`
@@ -57,7 +54,7 @@ const Navbar = () => {
       <StyledFlex
         mx="auto"
         px={[3, 3, 5]}
-        py={4}
+        py={top ? 4 : 3}
         justifyContent="space-between"
       >
         <Box>
