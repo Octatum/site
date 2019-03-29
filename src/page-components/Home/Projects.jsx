@@ -1,21 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Flex, Box } from '@rebass/grid';
+import { Flex } from '@rebass/grid';
+import { useStaticQuery, graphql } from 'gatsby';
 import CommonContainer from '../../components/CommonContainer';
 import SectionHeader from './SectionHeader';
-import { useStaticQuery, graphql, Link } from 'gatsby';
 import { mediaQueries } from '../../utils/theme';
-import GatsbyImage from 'gatsby-image';
-import { getCleanName } from '../../utils/functions';
 import { navigationIds } from '../../components/Navhub';
 import SectionDiv from '../../components/SectionDiv';
-
-const ImageBox = styled(Box)`
-  height: 12.5rem;
-  max-width: 29rem;
-  background: green;
-  width: 100%;
-`;
+import ProjectBox from './ProjectBox';
 
 const Grid = styled(Flex)`
   display: grid;
@@ -34,11 +26,6 @@ const Grid = styled(Flex)`
   }
 `;
 
-const Image = styled(GatsbyImage)`
-  max-height: 100%;
-  height: 100%;
-`;
-
 const Projects = () => {
   const projectsQueryData = useStaticQuery(graphql`
     {
@@ -48,8 +35,9 @@ const Projects = () => {
             projectName
             coverImages {
               asset {
-                fluid(maxWidth: 400) {
-                  ...GatsbySanityImageFluid
+                id
+                fluid(maxWidth: 600, maxHeight: 300) {
+                  ...GatsbySanityImageFluid_noBase64
                 }
               }
             }
@@ -75,22 +63,9 @@ const Projects = () => {
         />
       </Flex>
       <Grid>
-        {projects.map(project => {
-          const projectCleanName = getCleanName(project.name);
-          return (
-            <ImageBox
-              as={Link}
-              name={`Ver detalles de proyecto ${project.name}`}
-              to={`/proyecto/${projectCleanName}`}
-              key={projectCleanName}
-            >
-              <Image
-                alt={project.name}
-                fluid={project.coverImages[0].asset.fluid}
-              />
-            </ImageBox>
-          );
-        })}
+        {projects.map(project => (
+          <ProjectBox key={project.name} project={project} />
+        ))}
       </Grid>
     </CommonContainer>
   );

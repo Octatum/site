@@ -11,7 +11,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-styled-components',
-    `gatsby-plugin-netlify`,
     {
       resolve: 'gatsby-source-sanity',
       options: {
@@ -59,5 +58,6 @@ module.exports = {
     },
     'gatsby-plugin-offline',
     `gatsby-plugin-sitemap`,
+    `gatsby-plugin-netlify`,
   ],
 };
