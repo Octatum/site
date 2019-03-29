@@ -36,7 +36,7 @@ const Projects = () => {
             coverImages {
               asset {
                 id
-                fluid(maxWidth: 400, maxHeight: 200) {
+                fluid(maxWidth: 600, maxHeight: 300) {
                   ...GatsbySanityImageFluid_noBase64
                 }
               }
