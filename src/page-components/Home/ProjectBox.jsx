@@ -33,17 +33,28 @@ function ProjectBox(props) {
   const projectCleanName = getCleanName(project.name);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  function setNextImage() {
+    setCurrentImageIndex((currentImageIndex + 1) % 2);
+  }
+
   useEffect(() => {
-    const maxTime = 3000;
+    const maxTime = 4000;
     const minTime = 2000;
     const time = Math.random() * (maxTime - minTime) + minTime;
-    const interval = setTimeout(() => {
-      setCurrentImageIndex((currentImageIndex + 1) % 2);
-    }, time);
+    let start = null;
 
-    return () => {
-      clearInterval(interval);
-    };
+    function changeImage(timestamp) {
+      if (!start) start = timestamp;
+      const progress = timestamp - start;
+
+      if (progress < time) {
+        requestAnimationFrame(changeImage);
+      } else {
+        setNextImage();
+      }
+    }
+
+    requestAnimationFrame(changeImage);
   }, [currentImageIndex]);
 
   const transitions = useTransition(
