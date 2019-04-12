@@ -59,7 +59,7 @@ const Projects = () => {
         <SectionHeader
           topText="Explora"
           lightText="nuestro"
-          greenText="PASADO"
+          greenText="TRAYECTO"
         />
       </Flex>
       <Grid>

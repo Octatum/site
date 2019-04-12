@@ -5,7 +5,7 @@ import { Box } from '@rebass/grid';
 function SectionHeader(props) {
   const { topText, lightText, greenText } = props;
   return (
-    <Box as="h1" w={1} py={4}>
+    <Box as="h2" w={1} py={4}>
       <Text size={6} font="secondary">
         {topText}
       </Text>

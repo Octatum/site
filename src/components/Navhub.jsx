@@ -76,17 +76,18 @@ const Navhub = ({ closeNavhub, open }) => {
           {
             display: 'flex',
             opacity: 1,
-            background: 'rgba(255, 255, 255, 0.3)',
           },
         ]
-      : [
-          { opacity: 0, background: 'rgba(255, 255, 255, 0)' },
-          { display: 'none' },
-        ],
+      : [{ opacity: 0 }, { display: 'none' }],
   });
 
   return (
-    <Container onClick={closeNavhub} as={animated.div} style={props}>
+    <Container as={animated.div} style={props}>
+      <Box
+        onClick={closeNavhub}
+        width={[0, 0, 1 / 2]}
+        style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' }}
+      />
       <Box width={[1, 1, 1 / 2]} style={{ backgroundColor: '#050505' }}>
         <Flex
           px={[3, 4]}
@@ -132,7 +133,7 @@ const Navhub = ({ closeNavhub, open }) => {
             </Address>
             <Box pt={3}>
               <Text font="secondary" color="white" as="p">
-                contacto@octatum.com
+                &#99;&#111;&#110;&#116;&#97;&#99;&#116;&#111;&#64;&#111;&#99;&#116;&#97;&#116;&#117;&#109;&#46;&#99;&#111;&#109;
               </Text>
             </Box>
           </Box>
@@ -147,7 +148,7 @@ const Navhub = ({ closeNavhub, open }) => {
                 <Text color="white" size={3} as="p">
                   Explora nuestro{' '}
                   <Text color="white" as="span" font="secondary" bold italic>
-                    pasado
+                    trayecto
                   </Text>
                 </Text>
                 <Text size={1} font="secondary" color="white">

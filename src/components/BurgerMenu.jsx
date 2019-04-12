@@ -17,6 +17,10 @@ const Bar = styled(animated.div)`
   border-radius: 4px;
 `;
 
+const GreenBar = styled(Bar)`
+  background: ${({ theme }) => theme.color.green};
+`;
+
 function BurgerMenu(props) {
   const { open } = props;
   const baseDelay = open ? 0 : 50;
@@ -47,7 +51,7 @@ function BurgerMenu(props) {
 
   return (
     <Layout>
-      <Bar style={propsTopSpring} />
+      <GreenBar style={propsTopSpring} />
       <Bar style={propsMiddleSpring} />
       <Bar style={propsBottomSpring} />
     </Layout>
